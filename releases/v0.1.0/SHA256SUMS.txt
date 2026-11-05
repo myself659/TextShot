@@ -1,1 +1,1 @@
-cb6faf230f7b50e67267fb0241745b31da96feaa463525334b260b029af88892  TextShot-0.1.0-macos-universal.zip
+58c71930546b95897d5a040081a9d82debc32d7d8b4d3428db1e3ea3fec39391  TextShot-0.1.0-macos-universal.zip
