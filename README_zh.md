@@ -40,7 +40,7 @@
 
 在 [Releases](https://github.com/myself659/TextShot/releases) 下载最新版本的 Universal 通用发布包：
 
-📦 **[下载 TextShot v0.5.0 (macOS Universal)](https://github.com/myself659/TextShot/releases/download/v0.5.0/TextShot-0.5.0-macos-universal.zip)**
+📦 **[下载 TextShot v0.5.1 (macOS Universal)](https://github.com/myself659/TextShot/releases/download/v0.5.1/TextShot-0.5.1-macos-universal.zip)**
 
 解压并将 `TextShot.app` 拖入系统 **“应用程序”**（`/Applications`）文件夹中即可使用。
 
