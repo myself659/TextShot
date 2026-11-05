@@ -1,8 +1,8 @@
-# TextShot 瞬摘
+# TextShot
 
 <p align="center">
-  <strong>轻量、纯原生的 macOS 菜单栏文字提取与屏幕 OCR 工具</strong><br>
-  <em>Lightweight, pure native macOS menu bar OCR utility. Zero third-party dependencies, 100% on-device privacy.</em>
+  <strong>Lightweight, pure native macOS menu bar OCR utility.</strong><br>
+  <em>Zero third-party dependencies. 100% on-device privacy. Built for modern macOS.</em>
 </p>
 
 <p align="center">
@@ -14,41 +14,47 @@
   <a href="#"><img src="https://img.shields.io/badge/Dependencies-0-brightgreen" alt="Dependencies: Zero"></a>
 </p>
 
----
-
-## 💡 简介 (Overview)
-
-**TextShot** 是一款专为 macOS 打造的高性能菜单栏文字提取工具。只需按下全局快捷键 **Ctrl+Shift+T（⌃⇧T）**，框选屏幕任意区域，松开鼠标即可毫秒级将多语言识别结果静默复制到系统剪贴板。
-
-- ⚡️ **纯原生零依赖**：全代码基于 Swift 6.0 编写，完全采用 Apple 官方框架（ScreenCaptureKit、Vision、AppKit、Carbon），无任何第三方 Pods/SPM 依赖。
-- 🔒 **100% 本地离线 (Privacy First)**：OCR 识别全部在设备本地神经引擎/GPU 运行，绝不连接任何云端 API，无网络请求，无埋点追踪。
-- ⌨️ **免辅助功能权限**：基于 Carbon 注册全局热键，避免向系统申请高敏感的“辅助功能（Accessibility）”控制权限，企业合规友好。
-- 🌍 **全语言 OCR 识别扩充**：动态优先匹配 macOS 系统语言设置，启用 Vision 自动语言检测，原生支持中（简/繁/粤）、英、日、韩、法、德、西、俄、葡、意等多达 33 种语言的高精度识别。
-- 📐 **智能 CJK 阅读顺序重构**：内置几何拓扑算法，彻底解决中英文混排、多栏文本断行与多余空格问题。
-- 🖥️ **多显示器与视网膜适配**：原生支持多屏异构分辨率、Retina 缩放倍率对齐、负坐标副屏及屏幕旋转。
-- 📜 **最近历史回溯**：本地自动保存最近 10 条识别记录，支持菜单栏一键重拷与清空。
+<p align="center">
+  English | <a href="README_zh.md">简体中文</a>
+</p>
 
 ---
 
-## 🚀 下载与安装 (Installation)
+## 💡 Overview
 
-### 方式一：下载预编译发布包 (Recommended)
+**TextShot** is a high-performance, native macOS menu bar text extraction and optical character recognition (OCR) utility. 
 
-在 [Releases](https://github.com/myself659/TextShot/releases) 下载最新版本的 Universal 通用发布包：
+Press the global hotkey **Ctrl+Shift+T (⌃⇧T)**, drag to select any region on your screen, and release the mouse. The recognized text is copied silently to your system clipboard within milliseconds.
 
-📦 **[下载 TextShot v0.1.0 (macOS Universal)](https://github.com/myself659/TextShot/releases/download/v0.1.0/TextShot-0.1.0-macos-universal.zip)**
+- ⚡️ **Pure Native & Zero Dependencies**: Written 100% in Swift 6.0 Strict Concurrency, powered by Apple's native frameworks (`ScreenCaptureKit`, `Vision`, `AppKit`, `Carbon`). No Electron, no web wrappers, no third-party libraries.
+- 🔒 **100% On-Device Privacy**: OCR processing runs entirely on your local Apple Neural Engine / GPU. Zero network calls, zero telemetry, zero analytics.
+- ⌨️ **No Accessibility Permissions Required**: Global shortcuts are registered via lightweight Carbon Events without demanding high-privilege macOS Accessibility access. Safe and compliant for enterprise environments.
+- 🌍 **Multi-Language OCR (33 Languages)**: Dynamically prioritizes your macOS system language preferences with Apple Vision automatic language detection. Natively supports Simplified/Traditional/Cantonese Chinese, English, Japanese, Korean, French, German, Spanish, Portuguese, Italian, Russian, and more.
+- 📐 **Intelligent CJK Layout Reconstruction**: Built-in topological reading order engine seamlessly joins Asian characters without phantom line-breaks or awkward spaces, while preserving natural whitespace for Latin text.
+- 🖥️ **Multi-Display & Retina Ready**: Flawlessly handles heterogeneous multi-monitor setups, Retina scaling ratios, negative coordinates, and display rotations.
+- 📜 **Recent History**: Locally saves your last 10 recognitions for quick one-click recall directly from the menu bar.
 
-解压并将 `TextShot.app` 拖入系统 **“应用程序”**（`/Applications`）文件夹中即可使用。
+---
+
+## 🚀 Download & Installation
+
+### Option 1: Direct Download (Recommended)
+
+Download the latest precompiled Universal release package:
+
+📦 **[Download TextShot v0.1.0 (macOS Universal)](https://github.com/myself659/TextShot/releases/download/v0.1.0/TextShot-0.1.0-macos-universal.zip)**
+
+Extract the ZIP archive and move `TextShot.app` to your `/Applications` folder.
 
 > [!NOTE]
-> 正式发布包同时包含 Apple Silicon (M1/M2/M3/M4) 与 Intel (x86_64) 原生架构。
-> 若初次打开提示“无法打开，因为无法验证开发者”，请在终端执行：
+> The release package includes native universal binaries for both **Apple Silicon (M1/M2/M3/M4)** and **Intel (x86_64)**.
+> If macOS displays *"TextShot can't be opened because Apple cannot check it for malicious software"* (due to community ad-hoc signing), run:
 > ```sh
 > xattr -cr /Applications/TextShot.app
 > ```
-> 或前往 macOS **“系统设置” → “隐私与安全性”** 中点击 **“仍要打开”**。
+> Or open **System Settings → Privacy & Security** and click **"Open Anyway"**.
 
-### 方式二：通过 Homebrew 安装
+### Option 2: Install via Homebrew
 
 ```sh
 brew install myself659/tap/textshot
@@ -56,43 +62,48 @@ brew install myself659/tap/textshot
 
 ---
 
-## 📖 使用指南 (Usage)
+## 📖 Usage Guide
 
-1. **截取文字**：按默认快捷键 **Ctrl+Shift+T（⌃⇧T）**，屏幕将显示半透明遮罩。在任意屏幕上按住鼠标左键并拖拽框选文字，松开鼠标即自动开始静默 OCR 识别并写入剪贴板。
-2. **取消选区**：框选过程中按键盘 **Esc** 键或点击鼠标右键即可取消，原有剪贴板内容不受任何影响。
-3. **自定义快捷键**：点击菜单栏图标 → **“快捷键设置…”**，按下新的组合键（包含 ⌃、⌥ 或 ⌘），系统会自动校验是否与 macOS 系统内置热键冲突。
-4. **历史记录**：菜单栏内置“最近识别”列表（最多保留 10 条），点击即可再次复制。
+- **Capture Text**: Press **Ctrl+Shift+T (⌃⇧T)** to display a translucent selection overlay. Drag over any text on any display, then release. The extracted text is copied to your clipboard instantly.
+- **Cancel Selection**: Press **Esc** or right-click anytime during selection to abort without affecting your clipboard.
+- **Custom Shortcut**:
+  1. Click the menu bar icon → **"Shortcut Settings…"**.
+  2. Press your desired key combination (must include Control ⌃, Option ⌥, or Command ⌘).
+  3. Real-time conflict detection automatically checks against macOS system shortcuts.
+  4. Manual key/modifier pickers are also available.
+- **Clipboard History**: Access the "Recent History" submenu (stores up to 10 items) to recopy previous extractions or clear history.
 
 ---
 
-## 🔐 首次权限配置 (Screen Recording Permission)
+## 🔐 Permissions (Screen Recording)
 
-TextShot **仅需要且仅申请“屏幕录制”权限**，不需要辅助功能或自动化权限。
+TextShot **only requests Screen Recording permission**. It does NOT require Accessibility, Automation, or Network permissions.
 
-1. 打开应用后，按快捷键 **Ctrl+Shift+T** 或点击菜单栏图标 → **“截取文字”**。
-2. 尚未授权时，应用会弹出说明窗口。点击 **“允许屏幕录制…”**，系统将弹出授权提示，点击允许。
-3. 若系统未直接弹窗，点击窗口中的 **“打开系统设置…”**，在系统设置 **“隐私与安全性” → “屏幕录制”** 中勾选 **TextShot**。
-4. 授权完成后切换回 TextShot 会自动检测就绪；若系统权限缓存延迟，点击窗口中的 **“重新启动”** 即可立即生效。
+1. Press **Ctrl+Shift+T** or click the menu bar item → **"Capture Text"**.
+2. If ungranted, a guidance window appears. Click **"Grant Screen Recording…"** and allow in the system prompt.
+3. If no system prompt appears, click **"Open System Settings…"**, navigate to **Privacy & Security → Screen & System Audio Recording**, and enable **TextShot**.
+4. Once enabled, returning to TextShot will automatically detect authorization. Click **"Restart"** if the system permission cache requires a refresh.
 
 > [!TIP]
-> 正常使用中请勿随意运行全局 `tccutil reset`。若遇到极端权限缓存问题，可定向执行：
+> In normal usage, do not run global `tccutil reset`. If you experience persistent permission caching issues after replacing binaries, reset only TextShot's entry:
 > ```sh
 > tccutil reset ScreenCapture local.TextShot
 > ```
 
 ---
 
-## 🛡️ 校验发布包完整性 (Checksum Verification)
+## 🛡️ Checksum Verification
 
-每个发布版本的 SHA256 校验和均归档在 [`releases/`](releases/) 目录中：
+Every official release archive has its SHA256 checksum tracked under the [`releases/`](releases/) directory:
 
 ```sh
-# 验证 v0.1.0 发布包
+# Verify v0.1.0 release archive
 shasum -a 256 -c releases/v0.1.0/SHA256SUMS.txt
 ```
 
 ---
 
-## 📄 开源许可证 (License)
+## 📄 License
 
-本项目遵循 [MIT License](LICENSE) 开源协议。
+This project is licensed under the [MIT License](LICENSE).
+All native Apple frameworks and APIs used comply with standard macOS SDK terms.
