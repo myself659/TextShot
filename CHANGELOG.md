@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] - 2026-11-05
+
+### 🚀 Enhancements & Packaging Improvements
+
+- **Three-Repository Distribution Architecture**: Decoupled engine source code from binary distribution and package management.
+- **Homebrew Tap Support**: Official support for `brew install myself659/tap/textshot` with automated quarantine attribute bypass on installation.
+- **Universal Binary Optimization**: Hardened cross-compilation pipeline for arm64 & x86_64.
+- **Improved Release Verification**: End-to-end checksum verification and automated release pipeline.
+
+---
+
 ## [0.1.0] - 2026-11-05
 
 ### 🎉 Initial Public Release
