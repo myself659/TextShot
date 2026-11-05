@@ -42,7 +42,7 @@ Press the global hotkey **Ctrl+Shift+T (⌃⇧T)**, drag to select any region on
 
 Download the latest precompiled Universal release package:
 
-📦 **[Download TextShot v0.4.0 (macOS Universal)](https://github.com/myself659/TextShot/releases/download/v0.4.0/TextShot-0.4.0-macos-universal.zip)**
+📦 **[Download TextShot v0.5.0 (macOS Universal)](https://github.com/myself659/TextShot/releases/download/v0.5.0/TextShot-0.5.0-macos-universal.zip)**
 
 Extract the ZIP archive and move `TextShot.app` to your `/Applications` folder.
 
