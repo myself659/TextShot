@@ -1,0 +1,24 @@
+name: 功能建议 (Feature Request)
+description: 为 TextShot 提出新特性或优化建议
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 背景或痛点
+      description: 为什么需要这个特性？遇到了什么不便？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 功能方案与设想
+      description: 您希望 TextShot 提供怎样的新能力或改进交互？
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 考虑过的替代方案
+      description: 是否有现存的临时替代方式？

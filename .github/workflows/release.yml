@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release version tag (e.g. v0.1.0)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Resolve release tag
+        id: resolve_tag
+        env:
+          INPUT_TAG: ${{ github.event.inputs.tag_name }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          TAG="${INPUT_TAG:-$REF_NAME}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Target release tag: $TAG"
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ steps.resolve_tag.outputs.tag }}
+        run: |
+          VERSION="${RELEASE_TAG#v}"
+          NOTES_FILE="releases/$RELEASE_TAG/RELEASE_NOTES.md"
+          CHECKSUM_FILE="releases/$RELEASE_TAG/SHA256SUMS.txt"
+          
+          if [ ! -f "$NOTES_FILE" ]; then
+            NOTES_FILE="CHANGELOG.md"
+          fi
+          
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Release $RELEASE_TAG exists, updating..."
+            gh release edit "$RELEASE_TAG" --title "TextShot $RELEASE_TAG" --notes-file "$NOTES_FILE"
+          else
+            echo "Creating release $RELEASE_TAG..."
+            gh release create "$RELEASE_TAG" \
+              --title "TextShot $RELEASE_TAG" \
+              --notes-file "$NOTES_FILE" \
+              --generate-notes
+          fi
+          
+          if [ -f "$CHECKSUM_FILE" ]; then
+            gh release upload "$RELEASE_TAG" "$CHECKSUM_FILE" --clobber
+          fi

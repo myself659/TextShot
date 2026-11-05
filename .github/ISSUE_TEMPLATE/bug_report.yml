@@ -1,0 +1,59 @@
+name: Bug 报告 (Bug Report)
+description: 提交遇到异常行为或缺陷的反馈
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈问题！在提交之前，请先确认所使用的是最新版本的 TextShot。
+  - type: input
+    id: version
+    attributes:
+      label: TextShot 版本
+      description: 您正在运行的 TextShot 版本号（如 v1.0.4 或自编译版本）
+      placeholder: "v1.0.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: macos-version
+    attributes:
+      label: macOS 系统版本
+      description: 您的 Mac 运行的 macOS 大版本与芯片架构
+      options:
+        - macOS 15 Sequoia (Apple Silicon)
+        - macOS 15 Sequoia (Intel)
+        - macOS 14 Sonoma (Apple Silicon)
+        - macOS 14 Sonoma (Intel)
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 清晰简要地描述发生的异常行为
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤
+      description: 复现该问题的具体步骤
+      placeholder: |
+        1. 按下快捷键 ⌃⇧T
+        2. 拖拽选区选择屏幕上的文字
+        3. 松开鼠标
+        4. 发现剪贴板内容未更新
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果
+      description: 您期望发生什么
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相关日志或错误提示
+      description: 如果终端运行或系统日志中有错误输出，请在此粘贴
