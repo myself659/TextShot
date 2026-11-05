@@ -1,0 +1,1 @@
+908a17c6b24b73dc8e4ea7022a9be6609e209e1d9ceeeeece357d5fd64bbceef  TextShot-0.4.0-macos-universal.zip
